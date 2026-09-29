@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mina Emad | Full-Stack .NET Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles & Variables */
+    :root {
+      --bg-color: #0b0f19;
+      --card-bg: #151c2e;
+      --accent-color: #6366f1;
+      --accent-hover: #4f46e5;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border-color: #1f293d;
+      --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(11, 15, 25, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.8rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Layout Sections */
+    section {
+      padding: 6rem 2rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50%;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 2px;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 90vh;
+      gap: 3rem;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-content h2 {
+      font-size: 1.8rem;
+      color: var(--accent-color);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-content p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 550px;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 1.8rem;
+      background: var(--gradient);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+    }
+
+    .hero-img img {
+      width: 320px;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--accent-color);
+      box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+    }
+
+    /* Card Layouts */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.8rem;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-color);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Skills Tags */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--accent-color);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    /* Links & Buttons */
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-btn {
+      padding: 0.6rem 1.2rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .social-btn:hover {
+      background: var(--border-color);
+      border-color: var(--accent-color);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        justify-content: center;
+      }
+      .hero-content p {
+        margin: 0 auto 2rem;
+      }
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#home" class="logo">Mina Emad</a>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <p>Hi, my name is</p>
+        <h1>Mina Emad</h1>
+        <h2>Full-Stack .NET Developer</h2>
+        <p>I build modern, reliable, and scalable web applications using C#, ASP.NET Core, SQL Server, and modern Frontend technologies.</p>
+        <a href="#projects" class="btn">Explore My Work</a>
+      </div>
+      <div class="hero-img">
+        <img src="profile.jpg.jpg" alt="Mina Emad">
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="card">
+        <p>I'm a Computer Science and Information Technology student at the Egyptian E-Learning University (EELU), and a passionate Full-Stack .NET Developer dedicated to building scalable, high-performance, and maintainable web applications.
+
+My core expertise lies in backend architecture and API design using C#, .NET Core, ASP.NET Core Web API, Entity Framework Core, SQL Server, and RESTful APIs. I combine this strong backend foundation with modern frontend expertise in HTML5, CSS3, Flexbox, JavaScript, and Bootstrap 5, allowing me to deliver fully integrated, seamless web solutions from database to user interface.
+
+I have hands-on experience developing practical web projects—including responsive real-time landing pages, dynamic web interfaces, and structured CRUD applications—alongside offering freelance web solutions. I am deeply focused on applying clean code principles, efficient database design, software engineering best practices, and structured problem-solving in every project I build.
+
+Driven by continuous learning, I am always exploring new tools, optimizing application performance, and working on impactful software projects. I am currently open to freelance clients, web development projects, and software engineering opportunities.</p>
+        <p style="margin-top: 1rem;">I have experience in database design, CRUD operations, full-stack application development, and freelance web delivery.</p>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <div class="card">
+        <h3>Egyptian E-Learning University (EELU)</h3>
+        <p style="color: var(--accent-color); font-weight: 600;">Computer Science / Information Technology Student</p>
+        <p style="margin-top: 0.5rem;">Focused on Software Engineering, Data Structures, Database Systems, and Modern Web Development.</p>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    
+<!-- Skills Section -->
+<section id="skills">
+  <h2 class="section-title">Skills & Tools</h2>
+  <div class="grid-container">
+    
+    <!-- Technical Skills -->
+    <div class="card">
+      <h3>Technical Skills</h3>
+      <div class="skills-list">
+        <span class="tag">C#</span>
+        <span class="tag">.NET</span>
+        <span class="tag">ASP.NET Core</span>
+        <span class="tag">Web API</span>
+        <span class="tag">Entity Framework Core</span>
+        <span class="tag">LINQ</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">SQL</span>
+        <span class="tag">SQL Server</span>
+        <span class="tag">Database Design</span>
+        <span class="tag">Object-Oriented Programming</span>
+        <span class="tag">Data Structures & Algorithms</span>
+        <span class="tag">Angular</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">Bootstrap</span>
+      </div>
+    </div>
+
+    <!-- Soft Skills -->
+    <div class="card">
+      <h3>Soft Skills</h3>
+      <div class="skills-list">
+        <span class="tag">Problem Solving</span>
+        <span class="tag">Communication</span>
+        <span class="tag">Teamwork</span>
+        <span class="tag">Time Management</span>
+        <span class="tag">Adaptability</span>
+        <span class="tag">Continuous Learning</span>
+        <span class="tag">Attention to Detail</span>
+      </div>
+    </div>
+
+    <!-- Tools & AI Tools -->
+    <div class="card">
+      <h3>Tools & AI Tools</h3>
+      <div class="skills-list">
+        <span class="tag">Git</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">Visual Studio</span>
+        <span class="tag">Visual Studio Code</span>
+        <span class="tag">SQL Server Management Studio</span>
+        <span class="tag">Postman</span>
+        <span class="tag">Figma</span>
+        <span class="tag">AI Tools (ChatGPT, Gemini, Prompt Engineering)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Experience & Trainings Section -->
+<section id="experience">
+  <h2 class="section-title">Work Experience & Trainings</h2>
+  <div class="grid-container" style="grid-template-columns: 1fr;">
+    
+    <!-- 01: Route Academy (New & Outstanding) -->
+    <div class="card" style="display: flex; flex-direction: column; gap: 0.5rem; border-color: var(--accent-color);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <h3 style="color: #fff; margin-bottom: 0;">Full Stack Web Development Diploma</h3>
+        <span style="color: var(--accent-color); font-weight: 700; font-size: 0.85rem; background: rgba(99, 102, 241, 0.15); padding: 0.3rem 0.8rem; border-radius: 20px; border: 1px solid var(--accent-color);">★ Top Performer</span>
+      </div>
+      <p style="color: var(--accent-color); font-weight: 600; margin-top: -5px;">Route IT Academy</p>
+      <p>
+        Currently enrolled in an intensive Full-Stack .NET & Frontend track, consistently recognized as an outstanding and top-performing student. Developing advanced skills in C#, ASP.NET Core, EF Core, SQL Server, modern JavaScript, and Angular, with top scores on hands-on technical assignments and project reviews.
+      </p>
+      <div class="skills-list">
+        <span class="tag">C#</span>
+        <span class="tag">ASP.NET Core</span>
+        <span class="tag">Angular</span>
+        <span class="tag">SQL Server</span>
+        <span class="tag">Clean Architecture</span>
+      </div>
+    </div>
+
+    <!-- 02: ITI Summer Training -->
+    <div class="card" style="display: flex; flex-direction: column; gap: 0.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <h3 style="color: #fff; margin-bottom: 0;">Full Stack .NET Development Program</h3>
+        <span style="color: var(--accent-color); font-weight: 600; font-size: 0.9rem;">Jul – Sep 2026</span>
+      </div>
+      <p style="color: var(--accent-color); font-weight: 600; margin-top: -5px;">Information Technology Institute (ITI)</p>
+      <p>
+        Completed intensive professional summer training covering core .NET ecosystem and Web technologies: C#, Advanced OOP, ADO.NET, LINQ, Entity Framework / EF Core, ASP.NET Core MVC, ASP.NET Web API, RESTful APIs, and modern frontend web standards.
+      </p>
+      <div class="skills-list">
+        <span class="tag">C#</span>
+        <span class="tag">ASP.NET Core</span>
+        <span class="tag">EF Core</span>
+        <span class="tag">SQL Server</span>
+        <span class="tag">Web API</span>
+      </div>
+    </div>
+
+    <!-- 03: DEPI Program -->
+    <div class="card" style="display: flex; flex-direction: column; gap: 0.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <h3 style="color: #fff; margin-bottom: 0;">Full Stack .NET Development Track</h3>
+        <span style="color: var(--accent-color); font-weight: 600; font-size: 0.9rem;">Jul – Dec 2026</span>
+      </div>
+      <p style="color: var(--accent-color); font-weight: 600; margin-top: -5px;">Digital Egypt Pioneers Initiative (DEPI)</p>
+      <p>
+        Participating in a comprehensive Full Stack .NET track sponsored by the Ministry of Communications, focused on building end-to-end web applications, architecture best practices, database modeling, and real-world project deliveries.
+      </p>
+      <div class="skills-list">
+        <span class="tag">.NET Core</span>
+        <span class="tag">C#</span>
+        <span class="tag">Angular</span>
+        <span class="tag">Database Design</span>
+        <span class="tag">REST APIs</span>
+      </div>
+    </div>
+
+    <!-- 04: Freelance Work -->
+    <div class="card" style="display: flex; flex-direction: column; gap: 0.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <h3 style="color: #fff; margin-bottom: 0;">Junior Full-Stack .NET Developer / Freelancer</h3>
+        <span style="color: var(--accent-color); font-weight: 600; font-size: 0.9rem;">Freelance</span>
+      </div>
+      <p style="color: var(--accent-color); font-weight: 600; margin-top: -5px;">Khamsat, Upwork & Independent Clients</p>
+      <p>
+        Delivering customized web solutions, backend RESTful APIs, responsive landing pages, and database integration for clients across various freelance platforms with a commitment to clean code and tight deadlines.
+      </p>
+      <div class="skills-list">
+        <span class="tag">Full-Stack Development</span>
+        <span class="tag">Bootstrap 5</span>
+        <span class="tag">Web APIs</span>
+        <span class="tag">SQL</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+    <!-- Services Section -->
+    <!-- Services Section -->
+<section id="services">
+  <h2 class="section-title">Services</h2>
+  <div class="grid-container">
+    
+    <!-- 01 -->
+    <div class="card" style="position: relative;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <span style="color: var(--accent-color); font-weight: 800; font-size: 1.2rem;">01</span>
+      </div>
+      <h3>.NET Backend Development</h3>
+      <p>Developing backend applications using C#, .NET, ASP.NET Core, Entity Framework Core, and SQL Server.</p>
+    </div>
+
+    <!-- 02 -->
+    <div class="card" style="position: relative;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <span style="color: var(--accent-color); font-weight: 800; font-size: 1.2rem;">02</span>
+      </div>
+      <h3>REST API Development</h3>
+      <p>Designing and developing RESTful APIs for modern web applications using ASP.NET Core.</p>
+    </div>
+
+    <!-- 03 -->
+    <div class="card" style="position: relative;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <span style="color: var(--accent-color); font-weight: 800; font-size: 1.2rem;">03</span>
+      </div>
+      <h3>Database Design & Integration</h3>
+      <p>Designing relational databases and integrating applications with SQL Server.</p>
+    </div>
+
+    <!-- 04 -->
+    <div class="card" style="position: relative;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <span style="color: var(--accent-color); font-weight: 800; font-size: 1.2rem;">04</span>
+      </div>
+      <h3>Full–Stack Web Development</h3>
+      <p>Building web applications using ASP.NET Core and Angular when both backend and frontend development are required.</p>
+    </div>
+
+    <!-- 05 -->
+    <div class="card" style="position: relative;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <span style="color: var(--accent-color); font-weight: 800; font-size: 1.2rem;">05</span>
+      </div>
+      <h3>Angular Frontend Development</h3>
+      <p>Building responsive frontend interfaces using Angular, TypeScript, HTML, CSS, and Bootstrap.</p>
+    </div>
+
+  </div>
+</section>
+    <!-- Projects Section -->
+   <!-- Projects Section -->
+<section id="projects">
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+    
+    <!-- Project 1: Elite Homes -->
+    <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 1.2rem;">
+      <div>
+        <div style="width: 100%; height: 190px; overflow: hidden; border-radius: 8px; margin-bottom: 1.2rem; border: 1px solid var(--border-color);">
+          <img src="real-estate.jpg.jpg" alt="Elite Homes Project" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+        <h3>Elite Homes — Real Estate Platform</h3>
+        <p style="margin-bottom: 1rem;">
+          A modern and fully responsive real estate web application featuring property search filters, custom hero banners, category selections, client reviews, and interactive contact section built with Bootstrap 5.
+        </p>
+        <div class="skills-list" style="margin-bottom: 1.5rem;">
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">Bootstrap 5</span>
+          <span class="tag">Responsive UI</span>
+        </div>
+      </div>
+      <a href="https://github.com/minaemadk/exambootstrab" target="_blank" class="social-btn" style="text-align: center; display: block;">View on GitHub</a>
+    </div>
+
+    <!-- Project 2: What's For Dinner -->
+    <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 1.2rem;">
+      <div>
+        <div style="width: 100%; height: 190px; overflow: hidden; border-radius: 8px; margin-bottom: 1.2rem; border: 1px solid var(--border-color);">
+          <img src="recipes.jpg.jpg" alt="What's For Dinner Project" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+        <h3>What's For Dinner — Recipe Web App</h3>
+        <p style="margin-bottom: 1rem;">
+          An interactive daily meal inspiration web app that allows users to explore recipes, switch tabs for ingredients, nutrition details, chef tips, cook times, and generate new meal suggestions seamlessly.
+        </p>
+        <div class="skills-list" style="margin-bottom: 1.5rem;">
+          <span class="tag">JavaScript</span>
+          <span class="tag">DOM Manipulation</span>
+          <span class="tag">HTML5</span>
+          <span class="tag">Custom CSS</span>
+        </div>
+      </div>
+      <a href="https://github.com/minaemadk/task1js" target="_blank" class="social-btn" style="text-align: center; display: block;">View on GitHub</a>
+    </div>
+
+    <!-- Project 3: The UX Review -->
+    <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 1.2rem;">
+      <div>
+        <div style="width: 100%; height: 190px; overflow: hidden; border-radius: 8px; margin-bottom: 1.2rem; border: 1px solid var(--border-color);">
+          <img src="ux-review.jpg.jpg" alt="The UX Review Blog Project" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+        <h3>The UX Review — Tech & Design Blog</h3>
+        <p style="margin-bottom: 1rem;">
+          A stylish web publication platform designed with modern neo-brutalist UI layout, featuring trending articles, author highlights, interactive newsletter subscriptions, and bold typography.
+        </p>
+        <div class="skills-list" style="margin-bottom: 1.5rem;">
+          <span class="tag">HTML5</span>
+          <span class="tag">Flexbox & Grid</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Modern UI</span>
+        </div>
+      </div>
+      <a href="https://github.com/minaemadk" target="_blank" class="social-btn" style="text-align: center; display: block;">View on GitHub</a>
+    </div>
+
+  </div>
+</section>
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="card" style="text-align: center; padding: 3rem;">
+        <h3>Let's Work Together!</h3>
+        <p style="margin-bottom: 1.5rem;">I'm open for freelance opportunities, web development projects, and full-stack positions.</p>
+        <p><strong>Email:</strong> <a href="mailto:minaemad00100@gmail.com" style="color: var(--accent-color); text-decoration: none;">minaemad00100@gmail.com</a></p>
+        <div class="social-links" style="justify-content: center; margin-top: 1.5rem;">
+          <a href="https://github.com/minaemadk" target="_blank" class="social-btn">GitHub</a>
+          <a href="https://www.linkedin.com/in/mina-emad-17638a2a7" target="_blank" class="social-btn">LinkedIn</a>
+          <a href="https://khamsat.com/user/mina_emadk" target="_blank" class="social-btn">Khamsat</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Mina Emad. Built with HTML, CSS & JavaScript.</p>
+  </footer>
+
+</body>
+</html>
